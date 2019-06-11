@@ -1,0 +1,25 @@
+** ={} 不能省去，=后面的 {} 会在有参数传递过来的时候被替换掉**
+
+1. 为每一个参数指定默认值
+```
+function move({x = 0, y = 0} = {}) {
+  return [x, y];
+}
+
+move({x: 3, y: 8}); // [3, 8]
+move({x: 3}); // [3, 0]
+move({}); // [0, 0]
+move(); // [0, 0]
+```
+
+2. 为整个参数对象指定默认传递的参数对象
+```
+function move({x, y} = { x: 0, y: 0 }) {
+  return [x, y];
+}
+
+move({x: 3, y: 8}); // [3, 8]
+move({x: 3}); // [3, undefined]
+move({}); // [undefined, undefined]
+move(); // [0, 0]
+```
